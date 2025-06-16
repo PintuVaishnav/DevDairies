@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Welcome to Wanderlust",
+    "author": "Vaishnav Yejju",
+    "content": "This is the very first post on the Wanderlust personal blog!",
+    "createdAt": "2025-06-15T13:45:00Z",
+    "category": "General"
+  },
+  {
+    "title": "Exploring MERN Stack Projects",
+    "author": "Vaishnav Yejju",
+    "content": "In this post, we dive deep into building full stack apps using MongoDB, Express, React, and Node.",
+    "createdAt": "2025-06-14T09:30:00Z",
+    "category": "Development"
+  },
+  {
+    "title": "Getting Started with MongoDB",
+    "author": "Vaishnav Yejju",
+    "content": "Let's understand how to set up and run MongoDB locally, and how to import/export data easily.",
+    "createdAt": "2025-06-13T10:00:00Z",
+    "category": "Database"
+  }
+]
