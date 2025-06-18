@@ -11,20 +11,30 @@ import connectDB from './config/db.js';
 import { connectToRedis } from './services/redis.js';
 import postsRouter from './routes/posts.js';
 import authRouter from './routes/auth.js';
-import Post from './models/post.js'; // from your simple API setup
+import Post from './models/post.js';
 
 dotenv.config();
 
 const app = express();
 
+// ✅ CORS Config
+const allowedOrigins = [
+  'https://dev-dairies.vercel.app',
+  'http://localhost:5173'
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
+
 // Middlewares
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(compression());
 
-// Connect to MongoDB (either via your connectDB() or inline)
+// Connect to MongoDB
 connectDB();
 
 // Connect to Redis
@@ -34,7 +44,7 @@ connectToRedis();
 app.use('/api/posts', postsRouter);
 app.use('/api/auth', authRouter);
 
-// ✅ Simple route to fetch all posts (from your old basic API)
+// Simple API route
 app.get('/api/all-posts', async (req, res) => {
   const posts = await Post.find().sort({ createdAt: -1 });
   res.json(posts);
