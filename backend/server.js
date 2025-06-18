@@ -42,7 +42,7 @@ app.get('/api/all-posts', async (req, res) => {
 
 // Root Route
 app.get('/', (req, res) => {
-  res.send('Wanderlust backend is live 🚀');
+  res.send('DevDiaries backend is live 🚀');
 });
 
 // Port
