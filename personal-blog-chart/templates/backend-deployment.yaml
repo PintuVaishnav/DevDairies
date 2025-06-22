@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "personal-blog-chart.fullname" . }}-backend
+  labels:
+    app: {{ include "personal-blog-chart.fullname" . }}-backend
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "personal-blog-chart.fullname" . }}-backend
+  template:
+    metadata:
+      labels:
+        app: {{ include "personal-blog-chart.fullname" . }}-backend
+    spec:
+      containers:
+        - name: backend
+          image: "{{ .Values.backendImage.repository }}:{{ .Values.backendImage.tag }}"
+          imagePullPolicy: {{ .Values.backendImage.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.backendService.port }}
+          livenessProbe:
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}

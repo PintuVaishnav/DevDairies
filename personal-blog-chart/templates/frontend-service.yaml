@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "personal-blog-chart.fullname" . }}-frontend
+  labels:
+    app: {{ include "personal-blog-chart.fullname" . }}-frontend
+spec:
+  type: {{ .Values.frontendService.type }}
+  ports:
+    - port: {{ .Values.frontendService.port }}
+      targetPort: {{ .Values.frontendService.port }}
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ include "personal-blog-chart.fullname" . }}-frontend
