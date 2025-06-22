@@ -1,6 +1,9 @@
 {
   "dependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.11"
   },
   "scripts": {
     "start-frontend": "cd frontend && npm run dev",
@@ -10,5 +13,8 @@
     "install-backend": "cd backend && npm i",
     "installer": "npm i && npm run install-backend && npm run install-frontend",
     "dev": "nodemon server.js"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.34"
   }
 }
